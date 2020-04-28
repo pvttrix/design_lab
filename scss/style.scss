@@ -1,0 +1,219 @@
+
+@import 'normalize';
+@import 'variables';
+@import 'mixins';
+/* @import 'slider'; */
+/* @import 'socials';
+ */
+
+*{
+    box-sizing: border-box;
+}
+html{
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+body{
+@include font($body-ff,1.6rem,$fc:$body-color,$fw:300,$lh:1.5);
+
+background-color: $body-bg;
+
+}
+.container{
+    max-width: 900px;
+    margin: 0 auto;
+
+}
+a:not([class]){
+    text-decoration: none;
+    color:$body-color;
+    border-bottom: 1px solid $body-color;
+    @include tr;
+    @include hover{
+        border-color:$accent-color;
+        color: $accent-color;
+    }
+}
+a,button{
+    transition: all .3s ease-in;
+}
+
+header{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    .logo{
+        fill: $secondary-color;
+        stroke: $secondary-color;
+    }
+   
+}
+.scroll{
+   @include posA($top:auto);
+   bottom: 40px;
+   fill: $secondary-color;
+   @include tr;
+   @include hover {
+       fill: $body-color;
+   }
+}
+footer{
+    .logo{
+        fill: $body-color;
+        stroke: $body-color;
+    }
+}
+h1{
+    font-size: 5.4rem;
+}
+h2{
+    font-size: 3.4rem;
+}
+h3{
+    font-size: 2rem;
+}
+.section{
+    text-align: center;
+    padding: 115px 0;
+    &--bg{
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: $primary-color;
+         color:$secondary-color;
+    }
+    &__title{
+        text-transform: uppercase;
+        letter-spacing: $letter-space;
+        line-height: 1;
+    }
+    &__subtitle{
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+    &__content{
+        padding:  60px   170px  30px;
+        border: $border-width solid $body-color;
+        border-top: none;
+        position: relative;
+         &::before,
+         &::after{
+             content: '';
+             position: absolute;
+            @include posA($top:0,$left:0,$delta_x:0,$delta_y:0);
+            width: 27%;
+            border-top:$border-width solid $body-color;
+            
+         }
+         &::after{
+             left: auto;
+             right: 0;
+         }
+        }
+        &__content > &__title{
+            position: absolute;
+            @include posA($top:0);
+            margin: 0;
+            max-width: 44%;
+            max-height: 6.8rem;
+            overflow: hidden;
+        }  
+        &--bg  &__content{
+            border-color: $secondary-color;
+            &::before,
+            &::after{
+                border-color: $secondary-color;
+            }
+        }
+}
+
+.feature{
+    font-size: 1.4rem;
+    text-align: center;
+    margin: 50px 0;
+    & + & {
+        margin-top: 100px;
+    }
+    &__title{
+        text-transform: uppercase;
+        letter-spacing: $letter-space;
+        margin: 30px 0;
+    }
+}
+
+.btn {
+    display: inline-block;
+    background-color: $body-color;
+    color: $secondary-color;
+    text-transform: uppercase;
+    letter-spacing: $letter-space;
+    padding: 20px;
+    text-decoration: none;
+    min-width: 70%;
+    margin: 30px auto;
+    font-weight: 400;
+    border: $border-width solid $body-color;
+    @include tr;
+    @include hover{
+        background-color: $secondary-color;
+        color: $body-color;
+        
+    }
+}
+
+.copyright{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    .logo{
+        margin-right: 20px;
+    }
+
+}
+
+.works{
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 1fr;
+    grid-template-rows:auto ;
+    grid-auto-flow: dense;
+    gap:10px;
+}
+.work{
+    background-color: $primary-color;
+    position: relative;
+    overflow: hidden;
+    height: 235px;
+   
+    &__img{
+        min-width: 100%;
+        min-height: 100%;
+        @include posA;
+        
+    }
+    &__name{
+           color: $secondary-color;
+           font-size: 3.4rem;
+           @include posA($top:auto,$left:40px,$delta-x:0,$delta-y:0);
+           bottom:30px;
+           right: 40px;
+           text-transform: uppercase;
+           max-height: 150px;
+           overflow: hidden;
+           word-break: break-all;
+           letter-spacing: $letter-space;
+
+     }
+     @include tr;
+        @include hover  {
+            .work__img{
+            transform: translate(-50%,-50%) scale(1.2);
+            @include tr;
+            }
+        }
+    /* &--tall{
+        grid-row:span 2;
+    } */
+}
